@@ -1,0 +1,45 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "top 100 movies project with postgresql",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/attainu/Top-100-Movies.git"
+  },
+  "keywords": [
+    "top100movies"
+  ],
+  "author": "Sanjay Bhargav Bandaru",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/attainu/Top-100-Movies/issues"
+  },
+  "homepage": "https://github.com/attainu/Top-100-Movies#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "express-validator": "^6.4.0",
+    "jsonwebtoken": "^8.5.1",
+    "multer": "^1.4.2",
+    "nodemailer": "^6.4.6",
+    "passport": "^0.4.1",
+    "pg": "^7.18.2",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^5.21.5",
+    "sqlite3": "^4.1.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "jest": "^25.2.1",
+    "nodemon": "^2.0.2"
+  }
+}
