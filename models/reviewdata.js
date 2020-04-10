@@ -1,5 +1,5 @@
-const sequelize = require("../db");
-const { Sequelize,DataTypes, Model } = require("sequelize");
+import { literal } from "../db";
+import { Sequelize, DataTypes, Model } from "sequelize";
 
 class Reviewsdata extends Model {}
 
@@ -28,13 +28,13 @@ const reviewdataSchema = {
       allowNull: false,
       type: Sequelize.DATE,
       field: 'beginTime',
-      defaultValue: sequelize.literal('NOW()')
+      defaultValue: literal('NOW()')
     },
     updatedAt: {
       allowNull: false,
       type: Sequelize.DATE,
       field: 'beginTime',
-      defaultValue: sequelize.literal('NOW()')
+      defaultValue: literal('NOW()')
     }
 };
 
@@ -43,4 +43,4 @@ Reviewsdata.init(reviewdataSchema, {
     tableName:"Moviereviews"
 })
 
-module.exports = Reviewsdata;
+export default Reviewsdata;

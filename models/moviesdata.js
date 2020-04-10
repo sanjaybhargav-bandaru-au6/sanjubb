@@ -1,5 +1,5 @@
-const sequelize = require("../db");
-const { Sequelize, Model } = require("sequelize");
+import sequelize from "../db";
+import { Sequelize, Model } from "sequelize";
 
 class Moviesdata extends Model {}
 
@@ -105,4 +105,4 @@ const moviesdataSchema = {
   });
 
   // Moviesdata.sync({alter:true});
- module.exports = Moviesdata;
+ export default Moviesdata;

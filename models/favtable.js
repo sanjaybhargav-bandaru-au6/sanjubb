@@ -1,5 +1,5 @@
-const sequelize = require("../db");
-const { Sequelize,DataTypes, Model } = require("sequelize");
+import { literal } from "../db";
+import { Sequelize, DataTypes, Model } from "sequelize";
 
 class Favmoviedata extends Model {}
 
@@ -8,13 +8,13 @@ const favmovietableSchema = {
       allowNull: false,
       type: Sequelize.DATE,
       field: 'beginTime',
-      defaultValue: sequelize.literal('NOW()')
+      defaultValue: literal('NOW()')
     },
     updatedAt: {
       allowNull: false,
       type: Sequelize.DATE,
       field: 'beginTime',
-      defaultValue: sequelize.literal('NOW()')
+      defaultValue: literal('NOW()')
     }
 };
 
@@ -25,4 +25,4 @@ Favmoviedata.init(favmovietableSchema, {
 
 // Favmoviedata.sync({alter:true});
 
-module.exports = Favmoviedata;
+export default Favmoviedata;

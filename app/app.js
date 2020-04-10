@@ -1,18 +1,18 @@
-const express = require("express");
-const bodyParser = require ("body-parser");
-const session = require("express-session");
-const passport = require("passport");
-var cors = require("cors")
+import express, { urlencoded } from "express";
+import { json, urlencoded as _urlencoded } from "body-parser";
+import session from "express-session";
+import { initialize } from "passport";
+import cors from "cors";
 const app = express();
 
 app.use(cors());
-const dotenv = require("dotenv");
-dotenv.config();
-require("./db")
+import { config } from "dotenv";
+config();
+import "./../db";
 // app.use(express.json());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.urlencoded({ extended: false }));
+app.use(json());
+app.use(_urlencoded({ extended: false }));
+app.use(urlencoded({ extended: false }));
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -29,14 +29,14 @@ app.use(
 );
 
 // passport authentication
-app.use(passport.initialize());
+app.use(initialize());
 // elephantsql
-var pg = require('pg');
+import { Client } from 'pg';
 //or native libpq bindings
 //var pg = require('pg').native
 
 var conString = "postgres://iygugnvx:FgRhMPVXhY4LSH33cSc5BGiqYAJz1Y3L@john.db.elephantsql.com:5432/iygugnvx" //Can be found in the Details page
-var client = new pg.Client(conString);
+var client = new Client(conString);
 client.connect(function(err) {
   if(err) {
     return console.error('could not connect to postgres', err);
@@ -54,9 +54,9 @@ client.connect(function(err) {
 
 
 //Routes
-app.use(require("./routes/userroutes"))
+app.use(require("./routes/userroutes").default)
 
 app.get('/',(_,res) => res.send('Hello folks'));
 app.get('/logout',(_, res) => res.send('you have been logged out successfully'));
 
-module.exports = app ;
+export default app ;

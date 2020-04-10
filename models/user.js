@@ -1,6 +1,6 @@
-const sequelize = require("../db");
-const { hash, compare } = require("bcryptjs");
-const { Sequelize, Model } = require("sequelize");
+import sequelize from "../db";
+import { hash, compare } from "bcryptjs";
+import { Sequelize, Model } from "sequelize";
 
 class User extends Model {
   static async findByEmailAndPassword(email, password) {
@@ -89,4 +89,4 @@ User.beforeUpdate(async user => {
   }
 });
 
-module.exports = User;
+export default User;

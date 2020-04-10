@@ -1,4 +1,4 @@
-const Sequelize = require("sequelize");
+import Sequelize from "sequelize";
 const {POSTGRES_URI, POSTGRES_PASSWORD } = process.env;
 
 
@@ -16,4 +16,4 @@ sequelize
   console.error('Unable to connect to the database:', err);
 });
 
-module.exports = sequelize
+export default sequelize
