@@ -5,21 +5,17 @@ const { Sequelize, Model } = require("sequelize");
 class User extends Model {
   static async findByEmailAndPassword(email, password) {
     try {
-      console.log("userextends -------------------")
       const user = await User.findOne({
         where: {
           email
         }
       });
       if (!user) { 
-        console.log("not a registered user")
-        return;
+        return res.status(404).send("Not a registered user");
       }
       const isMatched = await compare(password, user.password);
       if (!isMatched) {
-        // throw new Error("Incorrect credentials");
-        console.log("incorrect password");
-        return ;
+        return res.status(404).send("incorrect password");
       }
       return user;
     } catch (err) {
@@ -39,18 +35,15 @@ const userSchema = {
     allowNull: false,
     foreignKey:true
   },
-  
   Isconfirmed:{
     type:Sequelize.BOOLEAN,
     default: false,
     allowNull: true
-    
   },
   Isactive:{
     type:Sequelize.BOOLEAN,
     default: false,
     allowNull: true
-    
   },
   password: {
     type: Sequelize.STRING,
@@ -77,16 +70,12 @@ const userSchema = {
 
 };
 
-
-
-
 User.init(userSchema, {
   sequelize,
   tableName: "users"
 });
 
 // User.sync({alter:true});
-
 
 User.beforeCreate(async user => {
   const hashedPassword = await hash(user.password, 10);

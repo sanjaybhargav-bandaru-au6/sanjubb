@@ -85,7 +85,6 @@ const moviesdataSchema = {
       allowNull: false,
       unique: true,
       foreignKey:true,
-      
       primaryKey: true
     },
     createdAt: {
@@ -98,13 +97,12 @@ const moviesdataSchema = {
       defaultValue: new Date(),
       type: Sequelize.DATE
     }
-  
   };
+
   Moviesdata.init(moviesdataSchema, {
     sequelize,
     tableName: "moviesdata"
   });
+
   // Moviesdata.sync({alter:true});
-
-
-  module.exports = Moviesdata;
+ module.exports = Moviesdata;
