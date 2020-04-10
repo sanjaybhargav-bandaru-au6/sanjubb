@@ -29,22 +29,22 @@ const { allmovies,
   } = require ("../controllers/usercontroller");
 
 // get routes
-router.get("/login", loginUser);
-router.get("/logout",logoutUser);
-router.get("/confirmation/:token",confirmation);
-router.get("/home",auth,homepage);
-router.get("/",allmovies);
-router.get("/profile",auth,profile);
+router.get("api/login", loginUser);
+router.get("api/logout",logoutUser);
+router.get("api/confirmation/:token",confirmation);
+router.get("api/home",auth,homepage);
+router.get("api/",allmovies);
+router.get("api/profile",auth,profile);
 
 // post routes
-router.post("/register", registerUser);
-router.post("/changepassword", auth, changePassword);
-router.post("/logout",logoutUser);
-router.post("/confirmation/:token",confirmation);
-router.post("/rateandreview",auth,reviewSystem);
-router.post("/addfavmovie",auth,addfavmovie)
+router.post("api/register", registerUser);
+router.post("api/changepassword", auth, changePassword);
+router.post("api/logout",logoutUser);
+router.post("api/confirmation/:token",confirmation);
+router.post("api/rateandreview",auth,reviewSystem);
+router.post("api/addfavmovie",auth,addfavmovie)
 
 //delete routes
-router.delete("/delete", auth, deleteAccount);
+router.delete("api/delete", auth, deleteAccount);
 
 module.exports = router;
